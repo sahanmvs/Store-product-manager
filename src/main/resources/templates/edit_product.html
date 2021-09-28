@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Edit Product</title>
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Product Manager</a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link" aria-current="page" href="/">Home</a>
+                <a class="nav-link" href="/addproduct">Add Product</a>
+                <a class="nav-link" href="/adduser">Add User</a>
+                <a class="nav-link" href="/users">View User</a>
+            </div>
+        </div>
+    </div>
+</nav>
+	<div class="container" align="center">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Edit Product</h1> 
+				<br>
+				<form action="#" th:action="@{/psave}" th:object="${product}" method="post">
+					<table border="0" cellpadding="10">
+						<tr>
+							<td>Product_ID:</td>
+							<td><input type="text" th:field="*{id}" readonly="readonly" /></td>
+						</tr>
+						<tr>
+							<td>Product_Name:</td>
+							<td><input required="required" type="text" th:field="*{name}" /></td>
+						</tr>
+						<tr>
+							<td>Brand:</td>
+							<td><input required="required" type="text" th:field="*{brand}" /></td>
+						</tr>
+						<tr>
+							<td>Price:</td>
+							<td><input required="required" type="text" th:field="*{price}" /></td>
+						</tr>
+						<tr>
+							<td>Description:</td>
+							<td><textarea required="required" type="text" th:field="*{description}" /></td>
+						</tr>
+						<tr>
+							<td>Qty:</td>
+							<td><input required="required" type="text" th:field="*{Qty}" /></td>
+						</tr>
+						<tr>
+							<td>Category:</td>
+							<td>
+						 <select  th:field="*{category}" class="form-control" required>
+                                    <option value="" th:disabled="disabled" th:selected="selected">
+                                        Choose your option
+                                    </option>
+                                    <th:block th:each="list : ${categoryList}">
+                                        <option th:text="${list.title}" th:value="${list.id}"/>
+                                    </th:block>
+                         </select>
+					</td>
+							
+						</tr>
+						<tr>
+							<td colspan="2"><button class="btn btn-primary" type="submit">Save</button></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
