@@ -1,2 +1,2 @@
 # Store-product-manager
-A simple web app 
+Simple spring boot web app using Hibernate, JPA, Thymeleaf, Mysql
